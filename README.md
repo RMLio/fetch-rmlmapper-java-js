@@ -8,7 +8,7 @@ directly from within your application.
 
 ### CLI
 
-- Install the tool: `npm i @rmlio/rmlmapper-java-fetcher`.
+- Install the tool: `npm i @rmlio/fetch-rmlmapper-java`.
 - Execute the tool: `download-rmlmapper`. 
 The latest jar of the RMLMapper is downloaded to the current working directory.
 
