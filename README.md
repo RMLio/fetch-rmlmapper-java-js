@@ -8,7 +8,7 @@ directly from within your application.
 
 ### CLI
 
-- Install the tool: `npm i @rmlio/download-rmlmapper-java`.
+- Install the tool: `npm i @rmlio/download-rmlmapper`.
 - Execute the tool: `download-rmlmapper`. 
 The latest jar of the RMLMapper is downloaded to the current working directory.
 

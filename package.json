@@ -1,5 +1,5 @@
 {
-  "name": "@rmlio/download-rmlmapper-java",
+  "name": "@rmlio/download-rmlmapper",
   "version": "0.0.1",
   "description": "Download the Java RMLMapper jar.",
   "main": "index.js",
