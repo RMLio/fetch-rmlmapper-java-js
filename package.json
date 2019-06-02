@@ -1,0 +1,30 @@
+{
+  "name": "@rmlio/download-rmlmapper-java",
+  "version": "0.0.1",
+  "description": "Download the Java RMLMapper jar.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "download-rmlmapper": "./bin/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RMLio/download-rmlmapper-java-js.git"
+  },
+  "keywords": [
+    "RML",
+    "RMLMapper"
+  ],
+  "author": "Pieter Heyvaert <pheyvaer.heyvaert@ugent.be> (https://pieterheyvaert.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RMLio/download-rmlmapper-java-js/issues"
+  },
+  "homepage": "https://github.com/RMLio/download-rmlmapper-java-js#readme",
+  "dependencies": {
+    "follow-redirects": "^1.7.0",
+    "winston": "^3.2.1"
+  }
+}
