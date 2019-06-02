@@ -1,4 +1,4 @@
-# download-rmlmapper-java-js
+# fetch-rmlmapper-java-js
 
 Easily download the latest jar of the RMLMapper, 
 either via the command line interface or 

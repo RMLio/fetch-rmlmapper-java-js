@@ -20,9 +20,9 @@
   "author": "Pieter Heyvaert <pheyvaer.heyvaert@ugent.be> (https://pieterheyvaert.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/RMLio/download-rmlmapper-java-js/issues"
+    "url": "https://github.com/RMLio/fetch-rmlmapper-java-js/issues"
   },
-  "homepage": "https://github.com/RMLio/download-rmlmapper-java-js#readme",
+  "homepage": "https://github.com/RMLio/fetch-rmlmapper-java-js#readme",
   "dependencies": {
     "follow-redirects": "^1.7.0",
     "winston": "^3.2.1"
