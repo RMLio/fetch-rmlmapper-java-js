@@ -18,8 +18,11 @@ const logger = winston.createLogger({
 });
 
 let version = null;
+
+// Get arguments from CLI.
 const args = process.argv.slice(2);
 
+// Check number of arguments.
 if (args.length > 1) {
   logger.error('Please provide no arguments to download the latest version or provide the version you want to download.');
   process.exit(1);

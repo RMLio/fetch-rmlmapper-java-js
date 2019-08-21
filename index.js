@@ -10,6 +10,12 @@ const path = require('path');
 const RMLMAPPER_RELEASES = 'https://api.github.com/repos/rmlio/rmlmapper-java/releases';
 const RMLMAPPER_LATEST = RMLMAPPER_RELEASES + '/latest';
 
+/**
+ * This method downloads the jar of the RMLMapper.
+ * @param toFolderPath The path to which the jar needs to be downloaded.
+ * @param version The version of the RMLMapper. Optional. Defaults to latest version.
+ * @returns {Promise<unknown>}
+ */
 function download(toFolderPath, version) {
   if (version) {
     return _downloadSpecificVersion(toFolderPath, version);
@@ -18,6 +24,12 @@ function download(toFolderPath, version) {
   }
 }
 
+/**
+ * This method downloads the jar of the latest version of the RMLMapper.
+ * @param toFolderPath The path to which the jar needs to be downloaded.
+ * @returns {Promise<unknown>}
+ * @private
+ */
 function _downloadLatestVersion(toFolderPath) {
   return new Promise((resolve, reject) => {
     https.get(RMLMAPPER_LATEST, {
@@ -49,6 +61,13 @@ function _downloadLatestVersion(toFolderPath) {
   });
 }
 
+/**
+ * This method downloads the jar of a specific version of the RMLMapper.
+ * @param toFolderPath The path of the folder where the jar needs to be downloaded.
+ * @param version The version of the RMLMapper that is wanted.
+ * @returns {Promise<unknown>}
+ * @private
+ */
 function _downloadSpecificVersion(toFolderPath, version) {
   return new Promise((resolve, reject) => {
     https.get(RMLMAPPER_RELEASES, {
@@ -76,7 +95,7 @@ function _downloadSpecificVersion(toFolderPath, version) {
             const filePath = path.resolve(toFolderPath, 'rmlmapper-' + version + '.jar');
 
             await _downloadToFile(url, filePath);
-            resolve();
+            resolve(version);
           } else {
             reject('No jar was found for the latest release. Please contact the developers.');
           }
@@ -91,6 +110,13 @@ function _downloadSpecificVersion(toFolderPath, version) {
   });
 }
 
+/**
+ * This method download a url to a file.
+ * @param url The url that needs to be downloaded.
+ * @param filePath The path of the file.
+ * @returns {Promise<unknown>} A promise that resolves when the file is downloaded or rejects when an error occurs.
+ * @private
+ */
 function _downloadToFile(url, filePath) {
   return new Promise((resolve, reject) => {
     const file = fs.createWriteStream(filePath);
@@ -103,6 +129,12 @@ function _downloadToFile(url, filePath) {
   });
 }
 
+/**
+ * This method return the url of the jar of a release.
+ * @param release An object with release information.
+ * @returns {null|*} The url of the jar or null
+ * @private
+ */
 function _getDownloadUrlFromRelease(release) {
   let i = 0;
 
