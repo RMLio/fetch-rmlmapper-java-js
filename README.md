@@ -1,6 +1,6 @@
 # fetch-rmlmapper-java-js
 
-Easily download the latest jar of the RMLMapper, 
+Easily download the jar of a specific or latest version of the RMLMapper, 
 either via the command line interface or 
 directly from within your application.
 
@@ -9,8 +9,11 @@ directly from within your application.
 ### CLI
 
 - Install the tool: `npm i @rmlio/fetch-rmlmapper-java`.
-- Execute the tool: `download-rmlmapper`. 
-The latest jar of the RMLMapper is downloaded to the current working directory.
+- Execute the tool: `download-rmlmapper [version]`. 
+
+The jar of the RMLMapper is to downloaded to the current working directory.
+When no `version` is provided, 
+the jar of the latest release is downloaded. 
 
 ### Library
 
