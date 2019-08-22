@@ -1,6 +1,6 @@
 {
   "name": "@rmlio/fetch-rmlmapper-java",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Download the Java RMLMapper jar.",
   "main": "index.js",
   "scripts": {
