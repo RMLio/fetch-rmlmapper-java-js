@@ -5,7 +5,7 @@
  * Ghent University - imec - IDLab
  */
 
-const { download } = require('../lib/downloadrmlmapper');
+const { download } = require('../lib/download-rmlmapper');
 const logger = require('../lib/logger');
 
 // Get arguments from CLI.
@@ -14,8 +14,8 @@ const args = process.argv.slice(2);
 // Check number of arguments.
 if (args.length > 2) {
   logger.error(`Arguments: cli.js [version] [filename].
-version: to specify with version you want to download (default: "latest").
-filename: to specify (via relative to the CWD or via absolute path) the filename of the downloaded jar.`);
+version: to specify with version you want to download (optional, default: "latest").
+filename: to specify (via relative to the CWD or via absolute path) the filename of the downloaded jar (optional, default: name of the published asset of the release).`);
   process.exit(1);
 } else {
   let version = null;

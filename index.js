@@ -3,6 +3,6 @@
  * Ghent University - imec - IDLab
  */
 
-const { download } = require('./lib/downloadrmlmapper');
+const { download } = require('./lib/download-rmlmapper');
 
 module.exports = download;

@@ -10,8 +10,8 @@ directly from within your application.
 
 - Install the tool: `npm i @rmlio/fetch-rmlmapper-java`.
 - Execute the tool: `download-rmlmapper [version] [filename]`.
-  - `version`: to specify with version you want to download (default: "latest")
-  - `filename`: to specify (via relative to the CWD or via absolute path) the filename of the downloaded jar
+  - `version`: to specify with version you want to download (optional, default: "latest").
+  - `filename`: to specify (via relative to the CWD or via absolute path) the filename of the downloaded jar (optional, default: name of the published asset of the release).
 - The eventually downloaded RMLMapper tag name will be stored in `rmlmapper-version.txt`, next to the jar.
 
 ### Library
