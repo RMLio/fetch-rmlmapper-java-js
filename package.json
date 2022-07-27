@@ -4,7 +4,7 @@
   "description": "Download the Java RMLMapper jar.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --recursive ./lib/**.spec.js"
   },
   "bin": {
     "download-rmlmapper": "./bin/cli.js"
@@ -26,5 +26,8 @@
   "dependencies": {
     "follow-redirects": "^1.7.0",
     "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "mocha": "^10.0.0"
   }
 }

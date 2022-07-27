@@ -5,34 +5,29 @@
  * Ghent University - imec - IDLab
  */
 
-const download = require('../index');
-const winston = require('winston');
-const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.json(),
-  transports: [
-    new winston.transports.Console({
-      format: winston.format.simple()
-    })
-  ]
-});
-
-let version = null;
+const { download } = require('../lib/downloadrmlmapper');
+const logger = require('../lib/logger');
 
 // Get arguments from CLI.
 const args = process.argv.slice(2);
 
 // Check number of arguments.
-if (args.length > 1) {
-  logger.error('Please provide no arguments to download the latest version or provide the version you want to download.');
+if (args.length > 2) {
+  logger.error(`Arguments: cli.js [version] [filename].
+version: to specify with version you want to download (default: "latest").
+filename: to specify (via relative to the CWD or via absolute path) the filename of the downloaded jar.`);
   process.exit(1);
 } else {
-  if (args.length === 1) {
+  let version = null;
+  let filename = null;
+  if (args[0]) {
     version = args[0];
-
     if (version.startsWith('v')) {
-      version = version.substr(1);
+      version = version.slice(1);
     }
+  }
+  if (args[1]) {
+    filename = args[1];
   }
 
   if (version) {
@@ -41,9 +36,10 @@ if (args.length > 1) {
     logger.info('Downloading the latest version of the RMLMapper...');
   }
 
-  download(process.cwd(), version)
-    .then(() => {
-      logger.info('Download complete. The RMLMapper is available at ' + process.cwd());
+  download(filename, version, process.cwd())
+    .then(({ tagName, filePath }) => {
+      fs.writeFileSync(path.resolve(process.cwd(), 'rmlmapper-version.txt'), tagName, 'utf8')
+      logger.info(`Download complete. The RMLMapper is available at ${filePath}`);
     })
     .catch(e => {
       logger.error(e);
