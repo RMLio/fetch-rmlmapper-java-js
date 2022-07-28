@@ -31,6 +31,9 @@ if (version?.startsWith('v')) {
 }
 logger.debug(`Using version ${version}`)
 let filename = options.filename || null;
+if (filename && !filename.endsWith('.jar')) {
+  filename = filename + '.jar';
+}
 
 if (version) {
   logger.info(`Downloading the RMLMapper v${version}...`);
@@ -40,7 +43,7 @@ if (version) {
 
 download(filename, version, process.cwd())
   .then(({ tagName, filePath }) => {
-    fs.writeFileSync(path.resolve(process.cwd(), 'rmlmapper-version.txt'), tagName, 'utf8')
+    fs.writeFileSync(path.resolve(process.cwd(), filePath.slice(0,-4) + '-version.txt'), tagName, 'utf8')
     logger.info(`Download complete. The RMLMapper is available at ${filePath}`);
   })
   .catch(e => {

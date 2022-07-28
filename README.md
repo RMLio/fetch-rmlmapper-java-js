@@ -11,7 +11,7 @@ directly from within your application.
 - Install the tool: `npm i @rmlio/fetch-rmlmapper-java`.
 - Execute the tool: `download-rmlmapper [options]`.
   - help is provided using `--help`, also seen below
-- The eventually downloaded RMLMapper tag name will be stored in `rmlmapper-version.txt`, next to the jar.
+- The eventually downloaded RMLMapper tag name will be stored in `[filename of jar]-version.txt`, next to the jar.
 
 ```
 Usage: @rmlio/fetch-rmlmapper-java [options]
