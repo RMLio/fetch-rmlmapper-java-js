@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Download to specific file
 - Tests
 - Store tag name in rmlmapper-version.txt when using CLI
+- Decent commandline parsing
 
 ## [0.0.3] - 2019-08-22
 

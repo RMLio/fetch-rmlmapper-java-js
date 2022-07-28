@@ -9,10 +9,21 @@ directly from within your application.
 ### CLI
 
 - Install the tool: `npm i @rmlio/fetch-rmlmapper-java`.
-- Execute the tool: `download-rmlmapper [version] [filename]`.
-  - `version`: to specify with version you want to download (optional, default: "latest").
-  - `filename`: to specify (via relative to the CWD or via absolute path) the filename of the downloaded jar (optional, default: name of the published asset of the release).
+- Execute the tool: `download-rmlmapper [options]`.
+  - help is provided using `--help`, also seen below
 - The eventually downloaded RMLMapper tag name will be stored in `rmlmapper-version.txt`, next to the jar.
+
+```
+Usage: @rmlio/fetch-rmlmapper-java [options]
+
+Download the Java RMLMapper jar.
+
+Options:
+  -V, --version                   output the version number
+  -g, --githubVersion [version]   optional version you want to download, as published on Github (default: "latest")
+  -f, --filename [rmlmapper.jar]  optional filename of the downloaded jar (via relative to the CWD or via absolute path) (default: name of the published asset of the release)
+  -h, --help                      display help for command
+```
 
 ### Library
 
