@@ -5,47 +5,49 @@
  * Ghent University - imec - IDLab
  */
 
-const download = require('../index');
-const winston = require('winston');
-const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.json(),
-  transports: [
-    new winston.transports.Console({
-      format: winston.format.simple()
-    })
-  ]
-});
+const { download } = require('../lib/download-rmlmapper');
+const logger = require('../lib/logger');
+const { program } = require('commander');
+const pkg = require('../package.json');
+const fs = require('fs');
+const path = require('path');
 
-let version = null;
+const NAME_OF_PUBLISHED_ASSET_LABEL = '[name of the published asset of the release]';
+
+program
+  .name(pkg.name)
+  .description(pkg.description)
+  .version(pkg.version)
+  .option('-g, --githubVersion [version]', 'optional version you want to download, as published on Github', 'latest')
+  .option('-f, --filename [rmlmapper.jar]', 'optional filename of the downloaded jar (via relative to the CWD or via absolute path)', NAME_OF_PUBLISHED_ASSET_LABEL)
+  .showHelpAfterError();
 
 // Get arguments from CLI.
-const args = process.argv.slice(2);
+program.parse();
+const options = program.opts();
 
-// Check number of arguments.
-if (args.length > 1) {
-  logger.error('Please provide no arguments to download the latest version or provide the version you want to download.');
-  process.exit(1);
-} else {
-  if (args.length === 1) {
-    version = args[0];
-
-    if (version.startsWith('v')) {
-      version = version.substr(1);
-    }
-  }
-
-  if (version) {
-    logger.info(`Downloading the RMLMapper v${version}...`);
-  } else {
-    logger.info('Downloading the latest version of the RMLMapper...');
-  }
-
-  download(process.cwd(), version)
-    .then(() => {
-      logger.info('Download complete. The RMLMapper is available at ' + process.cwd());
-    })
-    .catch(e => {
-      logger.error(e);
-    });
+let version = options.githubVersion === 'latest' ? null : options.githubVersion;
+logger.debug(version)
+if (version?.startsWith('v')) {
+  version = version.slice(1);
 }
+logger.debug(`Using version ${version}`)
+let filename = options.filename === NAME_OF_PUBLISHED_ASSET_LABEL ? null : options.filename;
+if (filename && !filename.endsWith('.jar')) {
+  filename = filename + '.jar';
+}
+
+if (version) {
+  logger.info(`Requesting the RMLMapper v${version}...`);
+} else {
+  logger.info('Requesting the latest version of the RMLMapper...');
+}
+
+download(filename, version, process.cwd())
+  .then(({ tagName, filePath }) => {
+    fs.writeFileSync(path.resolve(process.cwd(), filePath.slice(0, -4) + '-version.txt'), tagName, 'utf8')
+    logger.info(`Download complete. The RMLMapper is available at ${filePath}`);
+  })
+  .catch(e => {
+    logger.error(e);
+  });

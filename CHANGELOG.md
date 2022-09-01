@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Added
+
+- Moved to 'lib' folder
+- Download to specific file
+- Tests
+- Store tag name in [filename of jar]-version.txt when using CLI
+- Decent commandline parsing
+- Provided filename without `.jar`? add `.jar`
+
 ## [0.0.3] - 2019-08-22
 
 ### Added
