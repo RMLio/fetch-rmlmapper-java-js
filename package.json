@@ -1,10 +1,10 @@
 {
   "name": "@rmlio/fetch-rmlmapper-java",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Download the Java RMLMapper jar.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --recursive ./lib/**.spec.js"
   },
   "bin": {
     "download-rmlmapper": "./bin/cli.js"
@@ -24,7 +24,11 @@
   },
   "homepage": "https://github.com/RMLio/fetch-rmlmapper-java-js#readme",
   "dependencies": {
-    "follow-redirects": "^1.7.0",
-    "winston": "^3.2.1"
+    "commander": "^9.4.0",
+    "follow-redirects": "^1.15.1",
+    "winston": "^3.8.1"
+  },
+  "devDependencies": {
+    "mocha": "^10.0.0"
   }
 }
