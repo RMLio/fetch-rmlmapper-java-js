@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [0.1.0] - 2022-09-01
+
 ### Added
 
 - Moved to 'lib' folder
@@ -22,4 +24,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Download specific version
 - Changelog
 
+[0.1.0]: https://github.com/RMLio/fetch-rmlmapper-java-js/compare/v0.0.3...v0.1.0
 [0.0.3]: https://github.com/RMLio/fetch-rmlmapper-java-js/compare/v0.0.2...v0.0.3
